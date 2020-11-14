@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                sh 'test/test.sh' 
+                sh '/var/lib/jenkins/workspace/keep-backend/test/test.sh' 
             }
         }
     }
