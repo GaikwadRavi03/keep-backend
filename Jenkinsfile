@@ -10,4 +10,9 @@ pipeline {
             }
         }
     }
+    stage('Test') { 
+            steps {
+                sh 'test/test.sh' 
+            }
+        }
 }
