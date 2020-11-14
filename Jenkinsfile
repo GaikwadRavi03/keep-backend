@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                sh 'echo hello ravi' 
+                sh 'ssh -i /my-mumbai-key.pem ubuntu@65.0.96.93' 
             }
         }
     }
