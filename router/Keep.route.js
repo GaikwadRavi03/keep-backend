@@ -231,4 +231,9 @@ route.get('/archive/search/:text', (req, res) => {
     })
 });
 
+/** get hello world */
+route.get('/hello', (req, res) => {
+    res.send('Hello World')
+})
+
 module.exports = route
