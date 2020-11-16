@@ -8,18 +8,16 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 cd /var/lib/jenkins/workspace/
-                touch raviGaikwad
-                sudo cp raviGaikwad /home/ubuntu/
-                sudo cp -Rp keep-backend-pipeline /home/ubuntu
-                cd /home/ubuntu
+                echo ===> package creation stage
                 '''
             }
         }
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
-                cd /home/ubuntu/keep-backend-pipeline
+                cd /var/lib/jenkins/workspace/keep-backend-pipeline
                 sudo npm install
+                echo ===> Build stage
                 '''
             }
         }
@@ -31,8 +29,9 @@ pipeline {
         stage('deploy') { 
             steps {
                 sh ''' #!/bin/bash
-                cd /home/ubuntu/keep-backend-pipeline
+                cd /var/lib/jenkins/workspace/keep-backend-pipeline
                 sudo pm2 start server.js
+                echo ===> deploy stage
                 '''
             }
         }
