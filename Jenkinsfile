@@ -8,7 +8,7 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 cd /var/lib/jenkins/workspace/
-                cp keep-backend-pipeline /home/ubuntu
+                sudo cp -r keep-backend-pipeline /home/ubuntu
                 cd /home/ubuntu
                 '''
             }
