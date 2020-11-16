@@ -8,8 +8,8 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 cd /var/lib/jenkins/workspace/
-                touch ravi
-                cp ravi /home/ubuntu/
+                touch raviGaikwad
+                sudo cp raviGaikwad /home/ubuntu/
                 sudo cp -Rp keep-backend-pipeline /home/ubuntu
                 cd /home/ubuntu
                 '''
