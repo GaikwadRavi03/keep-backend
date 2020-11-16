@@ -8,7 +8,7 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 cd /var/lib/jenkins/workspace/
-                sudo cp keep-backend /home/ubuntu
+                sudo cp keep-backend-pipeline /home/ubuntu
                 cd /home/ubuntu
                 '''
             }
@@ -16,7 +16,7 @@ pipeline {
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
-                cd /home/ubuntu/keep-backend
+                cd /home/ubuntu/keep-backend-pipeline
                 sudo npm install
                 '''
             }
@@ -29,7 +29,7 @@ pipeline {
         stage('deploy') { 
             steps {
                 sh ''' #!/bin/bash
-                cd /home/ubuntu/keep-backend
+                cd /home/ubuntu/keep-backend-pipeline
                 sudo pm2 start server.js
                 '''
             }
