@@ -30,7 +30,6 @@ pipeline {
             steps {
                 sh ''' #!/bin/bash
                 cd /var/lib/jenkins/workspace/keep-backend-pipeline
-                sudo npm install pm2 -g
                 pm2 start server.js
                 echo ===> deploy stage
                 '''
