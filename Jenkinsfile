@@ -16,7 +16,7 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 cd /var/lib/jenkins/workspace/keep-backend-pipeline
-                sudo npm install
+                npm install
                 echo ===> Build stage
                 '''
             }
@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh ''' #!/bin/bash
                 cd /var/lib/jenkins/workspace/keep-backend-pipeline
-                sudo pm2 start server.js
+                pm2 start server.js
                 echo ===> deploy stage
                 '''
             }
