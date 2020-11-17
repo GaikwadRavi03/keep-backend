@@ -8,15 +8,17 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 cd /var/lib/jenkins/workspace/
-                echo ===> package creation stage
+                rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/keep-backend-pipeline ubuntu@13.232.191.197:/home/ubuntu/
+                echo ===> package creation on backend server
                 '''
             }
         }
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
-                cd /var/lib/jenkins/workspace/keep-backend-pipeline
-                npm install
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.191.197 'sudo rm -rf /home/ubuntu/keep-backend'
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.191.197 'mv /home/ubuntu/keep-backend-pipeline /home/ubuntu/keep-backend'
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.191.197 'bash /home/ubuntu/buildJenkis.sh'
                 echo ===> Build stage
                 '''
             }
@@ -29,8 +31,7 @@ pipeline {
         stage('deploy') { 
             steps {
                 sh ''' #!/bin/bash
-                cd /var/lib/jenkins/workspace/keep-backend-pipeline
-                pm2 start server.js
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.191.197 'bash /home/ubuntu/deployJenkins.sh'
                 echo ===> deploy stage
                 '''
             }
