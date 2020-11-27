@@ -7,7 +7,6 @@ pipeline {
         stage('package creation') { 
             steps { 
                 sh ''' #!/bin/bash
-                cd /var/lib/jenkins/workspace/
                 rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/keep-backend-pipeline ubuntu@65.0.6.140:/home/ubuntu/
                 echo ===> package creation on backend server
                 '''
