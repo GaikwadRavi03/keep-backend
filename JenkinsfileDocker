@@ -16,9 +16,9 @@ pipeline {
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
-                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo rm -rf /keep-backend'
-                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo mv /keep-backend-pipeline /keep-backend'
-                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /myCommands/dockerBuildBack.sh'
+                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo rm -rf /keep-backend'
+                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo mv /home/ubuntu/keep-backend-pipeline /keep-backend'
+                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /myCommands/dockerBuildBack.sh'
                 echo ===> Build stage
                 '''
             }
