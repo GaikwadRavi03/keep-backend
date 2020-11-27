@@ -10,7 +10,7 @@ pipeline {
                 cd /var/lib/jenkins/workspace/
                 echo "+++++++++++++++ hello ravi +++++++++++++++++++++++++"
                 touch raviiiiiiiiiiii.sh
-                rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/raviiiiiiiiiiii.sh ubuntu@65.0.6.140:/
+                rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/raviiiiiiiiiiii.sh ubuntu@65.0.6.140:/home/ubuntu/
                 #rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/keep-backend-pipeline ubuntu@65.0.6.140:/
                 echo ===> package creation on backend server
                 '''
