@@ -31,7 +31,7 @@ pipeline {
         stage('deploy') { 
             steps {
                 sh ''' #!/bin/bash
-                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /myCommands/dockerDeployBack.sh'
+                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /home/ubuntu/myScripts/deployBackend.sh'
                 echo ===> deploy stage
                 '''
             }
