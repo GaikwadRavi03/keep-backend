@@ -4,21 +4,22 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('package creation') { 
+        stage('Build Images') { 
             steps { 
                 sh ''' #!/bin/bash
-                rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/keep-backend-pipeline ubuntu@65.0.6.140:/home/ubuntu/
-                echo ===> package creation on backend server
+                bash /home/ubuntu/myCommands/buildBackend.sh
+                #rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/keep-backend-pipeline ubuntu@65.0.6.140:/home/ubuntu/
+                echo ===> "Build backend images and push to aws ecr"
                 '''
             }
         }
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
-                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo rm -rf /keep-backend'
-                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo mv /home/ubuntu/keep-backend-pipeline /keep-backend'
-                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /myCommands/dockerBuildBack.sh'
-                echo ===> Build stage
+                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo rm -rf /keep-backend'
+                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'sudo mv /home/ubuntu/keep-backend-pipeline /keep-backend'
+                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /myCommands/dockerBuildBack.sh'
+                #echo ===> Build stage
                 '''
             }
         }
@@ -30,7 +31,7 @@ pipeline {
         stage('deploy') { 
             steps {
                 sh ''' #!/bin/bash
-                ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /myCommands/dockerDeployBack.sh'
+                #ssh -i /my-mumbai-key.pem ubuntu@65.0.6.140 'bash /myCommands/dockerDeployBack.sh'
                 echo ===> deploy stage
                 '''
             }
